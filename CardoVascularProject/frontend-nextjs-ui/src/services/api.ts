@@ -1,5 +1,5 @@
 export async function predictCardio(data: any) {
-  const response = await fetch("http://127.0.0.1:5000/predict", {
+  const response = await fetch("'https://heart-disease-api-ty27.onrender.com/predict", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -13,3 +13,5 @@ export async function predictCardio(data: any) {
 
   return response.json();
 }
+
+// http://127.0.0.1:5000/predict

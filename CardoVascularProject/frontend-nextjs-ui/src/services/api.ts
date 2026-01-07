@@ -1,5 +1,5 @@
 export async function predictCardio(data: any) {
-  const response = await fetch("'https://heart-disease-api-ty27.onrender.com/predict", {
+  const response = await fetch("https://heart-disease-api-ty27.onrender.com/predict", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

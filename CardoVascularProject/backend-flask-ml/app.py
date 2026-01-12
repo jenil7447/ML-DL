@@ -10,6 +10,10 @@ CORS(app) # Enable CORS for all routes
 model = joblib.load("cardio_model.pkl")
 
 
+@app.route('/')
+def home():
+    return "Server Started! 🚀"
+
 @app.route("/predict", methods=["POST"])
 def predict():
     try:

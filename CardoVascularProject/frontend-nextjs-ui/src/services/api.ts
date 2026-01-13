@@ -15,12 +15,21 @@ class ApiService {
       ...options,
     });
 
-    if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.error || 'API request failed');
+    const text = await response.text();
+    let data;
+
+    try {
+      data = text ? JSON.parse(text) : {};
+    } catch (error) {
+      console.error('Failed to parse API response:', text);
+      throw new Error(`API Error: Received invalid JSON. Status: ${response.status}. See console for details.`);
     }
 
-    return response.json();
+    if (!response.ok) {
+      throw new Error(data.error || data.details || `Request failed with status ${response.status}`);
+    }
+
+    return data;
   }
 
   async predict(data: PatientData): Promise<PredictionResult> {

@@ -1,6 +1,7 @@
 import { PatientData, PredictionResult, ModelInfo } from '../types';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_BASE_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:5000').replace(/\/+$/, '');
+console.log('API Base URL:', API_BASE_URL);
 
 class ApiService {
   private async request<T>(
